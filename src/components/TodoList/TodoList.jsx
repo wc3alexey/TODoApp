@@ -1,5 +1,5 @@
 import React from "react";
-import Task from "../task";
+import Task from "../task/index.jsx";
 import PropTypes from 'prop-types';
 
 const TodoList = ({todos, handleRemove, onToggle, onSetEdit, onEditActiveItem}) =>{

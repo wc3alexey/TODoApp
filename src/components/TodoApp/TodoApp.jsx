@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import Footer from "../footer";
+import Footer from "../footer/index.jsx";
 import TodoList  from "../TodoList";
-import TasksFilter from "../tasks-filter/tasks-filter";
+import TasksFilter from "../tasks-filter/tasks-filter.jsx";
 
 
 

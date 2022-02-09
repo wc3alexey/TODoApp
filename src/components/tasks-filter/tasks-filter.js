@@ -1,53 +1,40 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-const TasksFilter = ({tab, clickHandler}) =>{
-
-
+function TasksFilter({ tab, clickHandler }) {
   TasksFilter.defaultProps = {
     tab: '',
-    handleRemove: () => { },
+    clickHandler: () => {},
   };
 
   TasksFilter.propTypes = {
-    name: PropTypes.string,
-    clickHandler:PropTypes.func,
+    tab: PropTypes.string,
+    clickHandler: PropTypes.func,
   };
- 
 
   return (
     <ul className="filters">
       <li>
-        <button
-          type="button"
-          className={tab === 'all' ? 'selected':'' }
-          onClick={()=>clickHandler('all')}
-        >
+        <button type="button" className={tab === 'all' ? 'selected' : ''} onClick={() => clickHandler('all')}>
           All
         </button>
       </li>
       <li>
-        <button
-          type="button"
-          className={tab === 'active' ? 'selected':'' }
-            onClick={()=>clickHandler('active')}
-        >
+        <button type="button" className={tab === 'active' ? 'selected' : ''} onClick={() => clickHandler('active')}>
           Active
         </button>
       </li>
       <li>
         <button
           type="button"
-          className={tab === 'сompleted' ? 'selected':'' }
-          onClick={()=>clickHandler('сompleted')
-          
-        }  
+          className={tab === 'сompleted' ? 'selected' : ''}
+          onClick={() => clickHandler('сompleted')}
         >
           Completed
         </button>
       </li>
     </ul>
   );
-};
+}
 
-export default TasksFilter ;
+export default TasksFilter;

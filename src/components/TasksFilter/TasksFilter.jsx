@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function TasksFilter({ tab, clickHandler }) {
+const TasksFilter = ({ tab, clickHandler }) => {
   TasksFilter.defaultProps = {
     tab: '',
     clickHandler: () => {},

@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react';
-import Footer from '../footer/footer';
+import Footer from '../Footer/Footer';
 import TodoList from '../TodoList/TodoList';
-import TasksFilter from '../tasks-filter/tasks-filter';
+import TasksFilter from '../TasksFilter/TasksFilter';
 
-function TodoApp() {
+const TodoApp = () => {
   const [todosList, setTodoslist] = useState([]);
   const [tab, setTab] = useState('all');
   const clickHandler = (currentTab) => {

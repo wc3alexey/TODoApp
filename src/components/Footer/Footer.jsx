@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Footer({ handleClear, activeCount }) {
+const Footer = ({ handleClear, activeCount }) => {
   return (
     <footer className="footer">
       <span className="todo-count">{activeCount} items left</span>

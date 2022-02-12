@@ -1,9 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Task from '../task/task';
+import Task from '../Task/Task';
 
-function TodoList({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem }) {
-  return (
+const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem }) => {
+  
+
+TodoList.defaultProps = {
+  todos: [],
+  handleRemove: () => {},
+  onToggle: () => {},
+  onSetEdit: () => {},
+  onEditActiveItem: () => {},
+};
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(PropTypes.object),
+  onToggle: PropTypes.func,
+  handleRemove: PropTypes.func,
+  onSetEdit: PropTypes.func,
+  onEditActiveItem: PropTypes.func,
+};
+
+return(
     <section className="main">
       <ul className="todo-list">
         {todos.map((item) => (
@@ -21,22 +38,9 @@ function TodoList({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem }
         ))}
       </ul>
     </section>
-  );
-}
+);
+};
 
-TodoList.defaultProps = {
-  todos: [],
-  handleRemove: () => {},
-  onToggle: () => {},
-  onSetEdit: () => {},
-  onEditActiveItem: () => {},
-};
-TodoList.propTypes = {
-  todos: PropTypes.arrayOf(PropTypes.object),
-  onToggle: PropTypes.func,
-  handleRemove: PropTypes.func,
-  onSetEdit: PropTypes.func,
-  onEditActiveItem: PropTypes.func,
-};
+
 
 export default TodoList;

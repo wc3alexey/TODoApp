@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import Footer from '../Footer/Footer';
+import { Footer } from '../Footer/Footer';
 import TodoList from '../TodoList/TodoList';
 import TasksFilter from '../TasksFilter/TasksFilter';
 
@@ -97,6 +97,6 @@ const TodoApp = () => {
       <Footer handleClear={handleClear} activeCount={activeCount} />
     </section>
   );
-}
+};
 
 export default TodoApp;

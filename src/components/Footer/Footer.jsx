@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Footer = ({ handleClear, activeCount }) => {
+export const Footer = ({ handleClear, activeCount }) => {
   return (
     <footer className="footer">
       <span className="todo-count">{activeCount} items left</span>
@@ -10,7 +10,7 @@ const Footer = ({ handleClear, activeCount }) => {
       </button>
     </footer>
   );
-}
+};
 
 Footer.defaultProps = {
   handleClear: () => {},
@@ -21,5 +21,3 @@ Footer.propTypes = {
   handleClear: PropTypes.func,
   activeCount: PropTypes.number,
 };
-
-export default Footer;

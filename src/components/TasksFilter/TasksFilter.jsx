@@ -35,6 +35,6 @@ const TasksFilter = ({ tab, clickHandler }) => {
       </li>
     </ul>
   );
-}
+};
 
 export default TasksFilter;

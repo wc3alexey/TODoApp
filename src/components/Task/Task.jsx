@@ -62,5 +62,5 @@ const Task = ({ name, isDone, isActive, id, handleRemove, onToggle, onSetEdit, o
     </li>
   );
   return isActive ? activeTask : task;
-}
+};
 export default Task;

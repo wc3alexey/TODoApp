@@ -28,17 +28,15 @@ const Task = ({ name, isDone, isActive, id, handleRemove, onToggle, onSetEdit, o
   const task = (
     <li className={isDone ? 'completed' : ''}>
       <div className="view">
-        <input className="toggle" type="checkbox" onChange={() => onToggle(id)} defaultChecked={isDone} />
-        <label>
-          <span className="description">{name}</span>
+        <input label className="toggle" type="checkbox" onChange={() => onToggle(id)} defaultChecked={isDone} />
+        <label onClick={() => onToggle(id)}>
+          <span className="description" autoFocus>
+            {name}
+          </span>
           <span className="created">{formatDistanceToNow(id)}</span>
         </label>
-        <button type="button" className="icon icon-edit" onClick={() => onSetEdit(id)}>
-          {}
-        </button>
-        <button type="button" className="icon icon-destroy" onClick={() => handleRemove(id)}>
-          {}
-        </button>
+        <button title="" type="button" className="icon icon-edit" onClick={() => onSetEdit(id)}></button>
+        <button title="" type="button" className="icon icon-destroy" onClick={() => handleRemove(id)}></button>
       </div>
     </li>
   );
@@ -46,19 +44,22 @@ const Task = ({ name, isDone, isActive, id, handleRemove, onToggle, onSetEdit, o
   const activeTask = (
     <li className="editing">
       <div className="view">
-        <input className="toggle" type="checkbox" />
+        <input label className="toggle" type="checkbox" />
         <label>
           <span className="description">{name}</span>
           <span className="created">created 5 minutes ago</span>
         </label>
-        <button type="button" className="icon icon-edit">
-          {}
-        </button>
-        <button type="button" className="icon icon-destroy">
-          {}
-        </button>
+        <button title="" type="button" className="icon icon-edit"></button>
+        <button title="" type="button" className="icon icon-destroy"></button>
       </div>
-      <input type="text" className="edit" defaultValue={name} onKeyUp={(event) => onEditActiveItem(id, event)} />
+      <input
+        label
+        autoFocus
+        type="text"
+        className="edit"
+        defaultValue={name}
+        onKeyUp={(event) => onEditActiveItem(id, event)}
+      />
     </li>
   );
   return isActive ? activeTask : task;

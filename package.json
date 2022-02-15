@@ -34,8 +34,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "requireConfigFile": false
+      "pre-commit": "lint-staged"
+  
     }
   },
   "scripts": {

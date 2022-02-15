@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+
 import { Footer } from '../Footer/Footer';
 import TodoList from '../TodoList/TodoList';
 import TasksFilter from '../TasksFilter/TasksFilter';
@@ -13,10 +14,11 @@ const TodoApp = () => {
   const activeCount = todosList.filter((item) => item.isDone).length;
 
   const onAdd = (event) => {
-    if (event.code === 'Enter' && event.target.value !== '') {
-      setTodoslist([...todosList, { name: event.target.value, id: Date.now() }]);
-      inputRef.current.value = '';
-    }
+    if (event.target.value.trim())
+      if (event.code === 'Enter' && event.target.value !== '') {
+        setTodoslist([...todosList, { name: event.target.value, id: Date.now() }]);
+        inputRef.current.value = '';
+      }
   };
 
   const onRemove = (id) => {

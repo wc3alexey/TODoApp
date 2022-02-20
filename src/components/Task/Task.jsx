@@ -29,8 +29,8 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
   const task = (
     <li className={isDone ? 'completed' : ''}>
       <div className="view">
-        <input label className="toggle" type="checkbox" onChange={() => onToggle(id)} defaultChecked={isDone} />
-        <label onClick={() => onToggle(id)}>
+        <input id="checkbox" className="toggle" type="checkbox" onChange={() => onToggle(id)} defaultChecked={isDone} />
+        <label htmlFor="checkbox" onClick={() => onToggle(id)}>
           <span className="description" autoFocus>
             {name}
           </span>
@@ -45,8 +45,8 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
   const activeTask = (
     <li className="editing">
       <div className="view">
-        <input label className="toggle" type="checkbox" />
-        <label>
+        <input id="editing" className="toggle" type="checkbox" />
+        <label htmlFor="editing">
           <span className="description">{name}</span>
           <span className="created">created 5 minutes ago</span>
         </label>
@@ -54,7 +54,7 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
         <button title="" type="button" className="icon icon-destroy"></button>
       </div>
       <input
-        label
+        id="editing"
         autoFocus
         type="text"
         className="edit"

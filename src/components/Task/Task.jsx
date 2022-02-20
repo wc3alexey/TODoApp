@@ -3,26 +3,20 @@ import PropTypes from 'prop-types';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => {
-  const{name, isDone, isActive, id} = item
+  const { name, isDone, isActive, id } = item;
   Task.defaultProps = {
-    name: '',
-    id: 0,
+    item: {},
     handleRemove: () => {},
     onToggle: () => {},
     onSetEdit: () => {},
-    isDone: false,
-    isActive: false,
     onEditActiveItem: '() => { }',
   };
 
   Task.propTypes = {
-    name: PropTypes.string,
-    id: PropTypes.number,
+    item: PropTypes.object,
     handleRemove: PropTypes.func,
     onToggle: PropTypes.func,
     onSetEdit: PropTypes.func,
-    isDone: PropTypes.bool,
-    isActive: PropTypes.bool,
     onEditActiveItem: PropTypes.func,
   };
 
@@ -45,7 +39,7 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
   const activeTask = (
     <li className="editing">
       <div className="view">
-        <input  id={name} className="toggle" type="checkbox" />
+        <input id={name} className="toggle" type="checkbox" />
         <label htmlFor={name}>
           <span className="description">{name}</span>
           <span className="created">created 5 minutes ago</span>

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 import Task from '../Task/Task';
 
-const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => {
+const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem }) => {
   TodoList.defaultProps = {
-    item :{},
     todos: [],
     handleRemove: () => {},
     onToggle: () => {},
@@ -13,7 +12,6 @@ const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem, 
     onEditActiveItem: () => {},
   };
   TodoList.propTypes = {
-    item:PropTypes.object,
     todos: PropTypes.arrayOf(PropTypes.object),
     onToggle: PropTypes.func,
     handleRemove: PropTypes.func,
@@ -26,7 +24,7 @@ const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem, 
       <ul className="todo-list">
         {todos.map((item) => (
           <Task
-              item ={item}
+            item={item}
             key={item.id}
             handleRemove={handleRemove}
             onToggle={onToggle}

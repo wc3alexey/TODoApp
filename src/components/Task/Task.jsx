@@ -36,8 +36,8 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
           </span>
           <span className="created">{formatDistanceToNow(id)}</span>
         </label>
-        <button title="" type="button" className="icon icon-edit" onClick={() => onSetEdit(id)}></button>
-        <button title="" type="button" className="icon icon-destroy" onClick={() => handleRemove(id)}></button>
+        <button title="edit" type="button" className="icon icon-edit" onClick={() => onSetEdit(id)}></button>
+        <button title="remove" type="button" className="icon icon-destroy" onClick={() => handleRemove(id)}></button>
       </div>
     </li>
   );
@@ -45,8 +45,8 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
   const activeTask = (
     <li className="editing">
       <div className="view">
-        <input id="editing" className="toggle" type="checkbox" />
-        <label htmlFor="editing">
+        <input  id={name} className="toggle" type="checkbox" />
+        <label htmlFor={name}>
           <span className="description">{name}</span>
           <span className="created">created 5 minutes ago</span>
         </label>

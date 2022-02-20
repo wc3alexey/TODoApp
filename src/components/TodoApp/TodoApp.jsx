@@ -82,11 +82,12 @@ const TodoApp = () => {
       <header className="header">
         <h1>todos</h1>
         <input
+            id="newTodo"
           className="new-todo"
           placeholder="What needs to be done?"
           ref={inputRef}
           onKeyUp={(event) => onAdd(event)}
-        />
+        /><label htmlFor="newTodo"/>
       </header>
       <TodoList
         todos={currentTodos()}

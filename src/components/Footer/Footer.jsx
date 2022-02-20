@@ -5,7 +5,7 @@ export const Footer = ({ handleClear, activeCount }) => {
   return (
     <footer className="footer">
       <span className="todo-count">{activeCount} items left</span>
-      <button type="button" className="clear-completed" onClick={handleClear}>
+      <button title="clear" type="button" className="clear-completed" onClick={handleClear}>
         Clear completed
       </button>
     </footer>

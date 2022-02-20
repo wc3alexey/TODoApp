@@ -50,8 +50,8 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
           <span className="description">{name}</span>
           <span className="created">created 5 minutes ago</span>
         </label>
-        <button title="" type="button" className="icon icon-edit"></button>
-        <button title="" type="button" className="icon icon-destroy"></button>
+        <button title="edit" type="button" className="icon icon-edit"></button>
+        <button title="remove" type="button" className="icon icon-destroy"></button>
       </div>
       <input
         id="editing"

@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
-const Task = ({ name, isDone, isActive, id, handleRemove, onToggle, onSetEdit, onEditActiveItem }) => {
+const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => {
+  const{name, isDone, isActive, id} = item
   Task.defaultProps = {
     name: '',
     id: 0,

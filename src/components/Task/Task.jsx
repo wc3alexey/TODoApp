@@ -60,3 +60,9 @@ const Task = ({ handleRemove, onToggle, onSetEdit, onEditActiveItem, item }) => 
   return isActive ? activeTask : task;
 };
 export default Task;
+
+// "husky": {
+//   "hooks": {
+//     "pre-commit": "lint-staged"
+//   }
+// },

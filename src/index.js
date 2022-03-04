@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import TodoApp from './components/TodoApp/TodoApp';
 import './index.css';
 

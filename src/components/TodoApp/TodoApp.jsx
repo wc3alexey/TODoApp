@@ -10,9 +10,7 @@ const TodoApp = () => {
   const [title, setTitle] = useState('');
   const [minuts, setMinuts] = useState('');
   const [second, setSecond] = useState('');
-  const clickHandler = (currentTab) => {
-    setTab(currentTab);
-  };
+  const clickHandler = (currentTab) => setTab(currentTab);
   const inputRef = useRef('');
   const activeCount = todosList.filter((item) => item.isDone).length;
 
@@ -61,14 +59,14 @@ const TodoApp = () => {
 
   const onEditActiveItem = (id, event) => {
     if (event.code === 'Enter' && event.target.value !== '') {
-      setTodoslist(
-        todosList.map((item) => {
-          if (item.id === id) {
-            return { ...item, name: event.target.value, isActive: false };
-          }
-          return item;
-        })
-      );
+      const tempTodoList = todosList.map((item) => {
+        if (item.id === id) {
+          return { ...item, name: event.target.value, isActive: false };
+        }
+        return item;
+      });
+
+      setTodoslist(tempTodoList);
     }
   };
   const currentTodos = () => {

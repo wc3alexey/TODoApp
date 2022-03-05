@@ -1,6 +1,4 @@
 node_modules
 /.vscode
 /.git
-src/registerServiceWorker.js
-src/index.js
-package.json
+

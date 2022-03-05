@@ -95,7 +95,7 @@ const TodoApp = () => {
     <section className="todoapp">
       <header className="header">
         <h1>todos</h1>
-        <form className="new-todo-form" onSubmit={handlerSubmit}>
+        <form className="new-todo-form" onSubmit={handlerSubmit(event).preventdefault()}>
           <input
             type="text"
             value={title}

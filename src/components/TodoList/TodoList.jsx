@@ -1,23 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import Task from '../Task/Task';
+import Task from '../Task/Task'
 
-const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem, minuts, second }) => {
+const TodoList = ({
+  todos,
+  handleRemove,
+  onToggle,
+  onSetEdit,
+  onEditActiveItem,
+  minuts,
+  second
+}) => {
   TodoList.defaultProps = {
     todos: [],
     handleRemove: () => {},
     onToggle: () => {},
     onSetEdit: () => {},
-    onEditActiveItem: () => {},
-  };
+    onEditActiveItem: () => {}
+  }
   TodoList.propTypes = {
     todos: PropTypes.arrayOf(PropTypes.object),
     onToggle: PropTypes.func,
     handleRemove: PropTypes.func,
     onSetEdit: PropTypes.func,
-    onEditActiveItem: PropTypes.func,
-  };
+    onEditActiveItem: PropTypes.func
+  }
 
   return (
     <section className="main">
@@ -36,7 +44,7 @@ const TodoList = ({ todos, handleRemove, onToggle, onSetEdit, onEditActiveItem, 
         ))}
       </ul>
     </section>
-  );
-};
+  )
+}
 
-export default TodoList;
+export default TodoList

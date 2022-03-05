@@ -1,26 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const TasksFilter = ({ tab, clickHandler }) => {
   TasksFilter.defaultProps = {
     tab: '',
-    clickHandler: () => {},
-  };
+    clickHandler: () => {}
+  }
 
   TasksFilter.propTypes = {
     tab: PropTypes.string,
-    clickHandler: PropTypes.func,
-  };
+    clickHandler: PropTypes.func
+  }
 
   return (
     <ul className="filters">
       <li>
-        <button type="button" className={tab === 'all' ? 'selected' : ''} onClick={() => clickHandler('all')}>
+        <button
+          type="button"
+          className={tab === 'all' ? 'selected' : ''}
+          onClick={() => clickHandler('all')}
+        >
           All
         </button>
       </li>
       <li>
-        <button type="button" className={tab === 'active' ? 'selected' : ''} onClick={() => clickHandler('active')}>
+        <button
+          type="button"
+          className={tab === 'active' ? 'selected' : ''}
+          onClick={() => clickHandler('active')}
+        >
           Active
         </button>
       </li>
@@ -34,7 +42,7 @@ const TasksFilter = ({ tab, clickHandler }) => {
         </button>
       </li>
     </ul>
-  );
-};
+  )
+}
 
-export default TasksFilter;
+export default TasksFilter

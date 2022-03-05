@@ -80,7 +80,8 @@ const TodoApp = () => {
     }
     return todosList;
   };
-  const handlerSubmit = () => {
+  const handlerSubmit = (event) => {
+    event.prevent.default;
     onAdd(title);
   };
   const changeTitle = (event) => {

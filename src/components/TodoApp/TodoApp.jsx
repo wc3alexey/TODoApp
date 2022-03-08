@@ -1,34 +1,37 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef } from 'react'
 
-import { Footer } from '../Footer/Footer';
-import TodoList from '../TodoList/TodoList';
-import TasksFilter from '../TasksFilter/TasksFilter';
+import { Footer } from '../Footer/Footer'
+import TodoList from '../TodoList/TodoList'
+import TasksFilter from '../TasksFilter/TasksFilter'
 
 const TodoApp = () => {
-  const [todosList, setTodoslist] = useState([]);
-  const [tab, setTab] = useState('all');
-  const [title, setTitle] = useState('');
-  const [minuts, setMinuts] = useState('');
-  const [second, setSecond] = useState('');
-  const clickHandler = (currentTab) => setTab(currentTab);
-  const inputRef = useRef('');
-  const activeCount = todosList.filter((item) => item.isDone).length;
+  const [todosList, setTodoslist] = useState([])
+  const [tab, setTab] = useState('all')
+  const [title, setTitle] = useState('')
+  const [minuts, setMinuts] = useState('')
+  const [seconds, setSecond] = useState('')
+  const clickHandler = (currentTab) => setTab(currentTab)
+  const inputRef = useRef('')
+  const activeCount = todosList.filter((item) => item.isDone).length
 
   const onAdd = (title) => {
     if (title !== '') {
-      setTodoslist([...todosList, { name: title, id: Date.now(), time: minuts * 60 + second }]);
-      setTitle('');
-      setMinuts('');
-      setSecond('');
+      setTodoslist([
+        ...todosList,
+        { name: title, id: Date.now(), time: minuts * 60 + seconds }
+      ])
+      setTitle('')
+      setMinuts('')
+      setSecond('')
     }
-  };
+  }
   const onRemove = (id) => {
-    setTodoslist(todosList.filter((item) => item.id !== id));
-  };
+    setTodoslist(todosList.filter((item) => item.id !== id))
+  }
 
   const handleClear = () => {
-    setTodoslist(todosList.filter((item) => !item.isDone));
-  };
+    setTodoslist(todosList.filter((item) => !item.isDone))
+  }
 
   const onToggle = (id) => {
     setTodoslist(
@@ -36,66 +39,66 @@ const TodoApp = () => {
         if (item.id === id) {
           return {
             ...item,
-            isDone: !item.isDone,
-          };
+            isDone: !item.isDone
+          }
         }
-        return item;
+        return item
       })
-    );
-  };
+    )
+  }
   const onSetEdit = (id) => {
     setTodoslist(
       todosList.map((item) => {
         if (item.id === id) {
           return {
             ...item,
-            isActive: true,
-          };
+            isActive: true
+          }
         }
-        return { ...item, isActive: false };
+        return { ...item, isActive: false }
       })
-    );
-  };
+    )
+  }
 
   const onEditActiveItem = (id, event) => {
     if (event.code === 'Enter' && event.target.value !== '') {
       const tempTodoList = todosList.map((item) => {
         if (item.id === id) {
-          return { ...item, name: event.target.value, isActive: false };
+          return { ...item, name: event.target.value, isActive: false }
         }
-        return item;
-      });
+        return item
+      })
 
-      setTodoslist(tempTodoList);
+      setTodoslist(tempTodoList)
     }
-  };
+  }
   const currentTodos = () => {
     if (tab === 'active') {
-      return todosList.filter((item) => !item.isDone);
+      return todosList.filter((item) => !item.isDone)
     }
     if (tab === 'сompleted') {
-      return todosList.filter((item) => item.isDone);
+      return todosList.filter((item) => item.isDone)
     }
-    return todosList;
-  };
+    return todosList
+  }
   const handlerSubmit = (event) => {
-    event.prevent.default;
-    onAdd(title);
-  };
+    event.preventDefault()
+    onAdd(title)
+  }
   const changeTitle = (event) => {
-    setTitle(event.target.value);
-  };
+    setTitle(event.target.value)
+  }
   const handlerTitleMinutes = (event) => {
-    setMinuts(event.target.value);
-  };
+    setMinuts(event.target.value)
+  }
   const handlerTitleSecond = (event) => {
-    setSecond(event.target.value);
-  };
+    setSecond(event.target.value)
+  }
   return (
     <section className="todoapp">
       <header className="header">
         <h1>todos</h1>
-        <form className="new-todo-form" onSubmit={handlerSubmit(event).preventdefault()}>
+        <form className="new-todo-form" onSubmit={(event)=>handlerSubmit(event)}>
           <input
             type="text"
             value={title}
@@ -117,7 +120,7 @@ const TodoApp = () => {
           />
           <input
             type="number"
-            value={second}
+            value={seconds}
             required
             className="new-todo-form__timer"
             placeholder={'Sec'}
@@ -129,9 +132,8 @@ const TodoApp = () => {
         <label htmlFor="newTodo" />
       </header>
       <TodoList
-        title={title}
         minuts={minuts}
-        second={second}
+        seconds={seconds}
         todos={currentTodos()}
         handleRemove={onRemove}
         onToggle={onToggle}
@@ -141,7 +143,7 @@ const TodoApp = () => {
       <TasksFilter tab={tab} clickHandler={clickHandler} />
       <Footer handleClear={handleClear} activeCount={activeCount} />
     </section>
-  );
-};
+  )
+}
 
-export default TodoApp;
+export default TodoApp

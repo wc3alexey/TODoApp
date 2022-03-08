@@ -170,7 +170,7 @@ body {
 
 .todo-list li {
 	position: relative;
-	font-size: 24px;
+	font-size: 12px;
 	border-bottom: 1px solid #ededed;
 }
 
@@ -239,8 +239,8 @@ body {
 }
 
 .todo-list li label .description {
-	font-size: 13px;
-	color: gray;
+	font-size: 20px;
+	border-bottom: 1px solid #ededed;
 }
 
 .todo-list li label .title {

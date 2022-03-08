@@ -10,7 +10,7 @@ const TodoList = ({
   onSetEdit,
   onEditActiveItem,
   minuts,
-  second
+  seconds
 }) => {
   TodoList.defaultProps = {
     todos: [],
@@ -33,7 +33,7 @@ const TodoList = ({
         {todos.map((item) => (
           <Task
             minuts={minuts}
-            second={second}
+            seconds={seconds}
             item={item}
             key={item.id}
             handleRemove={handleRemove}

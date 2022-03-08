@@ -1,38 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'
 
-const Timer = ({ second, minuts }) => {
-  let timer = () => {};
+const Timer = ({
 
-  const [timeLeft, setTimeLeft] = useState({ minuts, second });
-
-  const startTimer = () => {
-    timer = setTimeout(() => {
-      if (timeLeft <= 0) {
-        clearTimeout(timer);
-        return false;
-      }
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-  };
-
-  useEffect(() => {
-    startTimer();
-    return () => clearTimeout(timer);
+  minuts, seconds
+}) => {
+  const [time, setTime] = useState({
+      m: minuts,
+      s: seconds,
   });
 
-  const start = () => {
-    setTimeLeft({ minuts, second });
-    clearTimeout(timer);
-    startTimer();
+  const [timer, setTimer] = useState(null);
+
+  const startTimer = () => {
+      let myInterval = setInterval(() => {
+          setTime((time) => {
+              const updatedTime = { ...time };
+              if (time.s > 0) {
+                  updatedTime.s--;
+              }
+
+              if (time.s === 0 ) {
+                  if (time.m === 0) {
+                      clearInterval(myInterval);
+                  } else if (time.m > 0) {
+                      updatedTime.m--;
+                      updatedTime.s = 59;
+                  }
+              }
+
+              return updatedTime;
+          });
+      }, 1000);
+      setTimer(myInterval);
   };
+
+  const pauseTimer = () => {
+      clearInterval(timer);
+  };
+
+ 
+  
   return (
     <>
       <span className="description">
-        <button className="icon icon-play" onClick={start}></button>
-        <button className="icon icon-pause"></button>
+        <button className="icon icon-play"  onClick={startTimer}></button>
+        <button className="icon icon-pause" onClick={pauseTimer}></button>
+        <h3>
+        {time.m < 10 ? `0${time.m}` : time.m}:
+        {time.s < 10 ? `0${time.s}` : time.s}
+        </h3>
       </span>
     </>
-  );
-};
+  )
+}
 
-export default Timer;
+export default Timer

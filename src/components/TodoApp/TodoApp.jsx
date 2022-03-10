@@ -18,12 +18,13 @@ const TodoApp = () => {
     if (title !== '') {
       setTodoslist([
         ...todosList,
-        { name: title, id: Date.now(), time: minuts * 60 + seconds }
+        { name: title, id: Date.now(), time: +minuts * 60 + +seconds }
       ])
       setTitle('')
       setMinuts('')
       setSecond('')
     }
+    console.log(todosList)
   }
   const onRemove = (id) => {
     setTodoslist(todosList.filter((item) => item.id !== id))
@@ -119,6 +120,7 @@ const TodoApp = () => {
             max="200"
           />
           <input
+      
             type="number"
             value={seconds}
             required
@@ -127,13 +129,11 @@ const TodoApp = () => {
             onChange={handlerTitleSecond}
             max="59"
           />
-          <input type="submit" />
+          <input className='send-submit' type="submit" />
         </form>
         <label htmlFor="newTodo" />
       </header>
       <TodoList
-        minuts={minuts}
-        seconds={seconds}
         todos={currentTodos()}
         handleRemove={onRemove}
         onToggle={onToggle}

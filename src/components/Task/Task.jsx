@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
+
 import Timer from '../Timer/Timer'
 
 const Task = ({
@@ -8,11 +9,9 @@ const Task = ({
   onToggle,
   onSetEdit,
   onEditActiveItem,
-  item,
-  minuts,
-  seconds
+  item
 }) => {
-  const { name, isDone, isActive, id } = item
+  const { name, isDone, isActive, id, time } = item
   Task.defaultProps = {
     item: {},
     handleRemove: () => {},
@@ -43,9 +42,9 @@ const Task = ({
           <span className="description" autoFocus>
             {name}
           </span>
-          <Timer minuts={minuts} seconds={seconds}/>
-          <span className="created">{formatDistanceToNow(id)}</span>
         </label>
+        <Timer time={time} />
+          <span className="created">{formatDistanceToNow(id)}</span>
         <button
           title="edit"
           type="button"

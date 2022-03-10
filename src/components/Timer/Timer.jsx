@@ -1,56 +1,48 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const Timer = ({
-
-  minuts, seconds
+  time
 }) => {
-  const [time, setTime] = useState({
-      m: minuts,
-      s: seconds,
-  });
+  const [totalTime, setTotalTime] = useState(time);
+  const [timerId, setTimerId] = useState(null);
 
-  const [timer, setTimer] = useState(null);
+  const tick = () => {
+    if (totalTime > 0) {
+      setTotalTime((prevtotalTime) => prevtotalTime - 1);
+    }
+  }
 
-  const startTimer = () => {
-      let myInterval = setInterval(() => {
-          setTime((time) => {
-              const updatedTime = { ...time };
-              if (time.s > 0) {
-                  updatedTime.s--;
-              }
+  const runTick = () => {
+    setTimerId(setInterval(tick, 1000));
+  }
 
-              if (time.s === 0 ) {
-                  if (time.m === 0) {
-                      clearInterval(myInterval);
-                  } else if (time.m > 0) {
-                      updatedTime.m--;
-                      updatedTime.s = 59;
-                  }
-              }
+  useEffect(() => {
+    
+    return () => clearInterval(timerId);
+  }, [time, timerId]);
 
-              return updatedTime;
-          });
-      }, 1000);
-      setTimer(myInterval);
-  };
+  if (totalTime === 0) {
+    clearInterval(timerId);
+  }
 
-  const pauseTimer = () => {
-      clearInterval(timer);
-  };
+  const min = totalTime / 60 < 10 ? `0${Math.floor(totalTime/ 60)}` : Math.floor(totalTime/ 60);
+  const sec = totalTime % 60 < 10 ? `0${totalTime % 60}` : totalTime % 60;
+  const timer = `${min}:${sec}`;
 
- 
   
   return (
-    <>
+    <span>
       <span className="description">
-        <button className="icon icon-play"  onClick={startTimer}></button>
-        <button className="icon icon-pause" onClick={pauseTimer}></button>
-        <h3>
-        {time.m < 10 ? `0${time.m}` : time.m}:
-        {time.s < 10 ? `0${time.s}` : time.s}
-        </h3>
+      <button type="button" label="Run timer" className="icon icon-play" onClick={runTick} />
+            <button
+              type="button"
+              label="Pause timer"
+              className="icon icon-pause"
+              onClick={() => clearInterval(timerId)}
+            />
+              <span className="timer-value">{timer}</span>
       </span>
-    </>
+    </span>
   )
 }
 
